@@ -268,7 +268,7 @@ def extract_audio(video_file, output_path):
         output_filename = video_file.stem + ".mka"
         output_file_path = output_path / output_filename
 
-        command = ['ffmpeg', '-i', str(video_file), '-vn', '-acodec', 'copy', '-y', '-hide_banner', '-loglevel',
+        command = ['ffmpeg', '-i', str(video_file), '-vn', '-c:a:0', 'copy', '-y', '-hide_banner', '-loglevel',
                    'error', str(output_file_path)]
 
         startupinfo = None

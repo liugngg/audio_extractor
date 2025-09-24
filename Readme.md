@@ -6,10 +6,15 @@
 ``` cmd
 ffmpeg -i /input/my_video.mkv -map 0:a:0 -c copy /output/extracted_audio.mka
 ```
+或者：
+``` cmd
+ffmpeg -i /input/my_video.mkv -vn -c copy /output/extracted_audio.mka
+```
 命令解释：
 - -i /input/my_video.mkv：指定输入文件。
-- -map 0:a:0：选择第一个音轨（索引0）。如果要提取第二条音轨，改为 -map 0:a:1。
-- -c copy：最关键参数。表示直接复制音频流，不重新编码，实现无损提取。
+- -map 0:a:0：选择第一个输入文件中的第一个音轨（索引0）。如果要提取第二条音轨，改为 -map 0:a:1。
+- -c copy：最关键参数。`-c`参数（`-codec`的简写） 表示直接复制音频流，不重新编码，实现无损提取。
+-  **`-vn`**（**V**ideo **N**o）禁用视频流处理，确保只提取音频。
 - /output/extracted_audio.mka：输出文件和路径。容器扩展名很重要，建议根据音频格式选择：
 AAC音频（来自MP4）：.m4a
 AC3音频：.ac3
